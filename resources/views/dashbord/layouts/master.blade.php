@@ -22,7 +22,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('admin.IndexPage') }}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Features</a>
@@ -32,6 +32,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled">Disabled</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.seo') }}">Seo</a>
                             </li>
                             <li class="nav-item mt-2 ms-2">
                                 <a class="dropdown-item" href="{{ route('logout') }}"

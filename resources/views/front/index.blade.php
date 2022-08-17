@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('seo')
-    @include('front.partials.seo')
+    @include('front.partials.seo',['data'=>$seo])
 @endsection
 @section('content')
     <!-- ======= Header ======= -->
