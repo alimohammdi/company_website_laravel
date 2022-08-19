@@ -33,6 +33,11 @@ Route::middleware('auth')->prefix('/dashboard')->group(function(){
     // about crud
     Route::resource('about',\App\Http\Controllers\admin\AboutController::class)->parameters(['about'=>'id']);
     // end about crud
+
+    // Team crud
+    Route::resource('team', \App\Http\Controllers\admin\TeamController::class)->parameters(['team'=>'id']);
+
+   // end Team crud
 });
 Route::get('/login',function(){
    return abort(404);

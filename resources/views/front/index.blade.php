@@ -22,7 +22,7 @@
         <!-- End Services Section -->
 
         <!-- ======= Team Section ======= -->
-          @include('front.partials.team')
+          @include('front.partials.team',['team'=>$team])
         <!-- End Team Section -->
 
         <!-- ======= Portfolio Section ======= -->
