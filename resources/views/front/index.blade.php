@@ -14,7 +14,7 @@
     <main id="main">
 
         <!-- ======= About Section ======= -->
-        @include('front.partials.about')
+        @include('front.partials.about',['about'=>$about])
         <!-- End About Section -->
 
         <!-- ======= Services Section ======= -->

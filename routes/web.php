@@ -28,9 +28,11 @@ Route::middleware('auth')->prefix('/dashboard')->group(function(){
     // admin and seo
     // slider crud
       Route::resource('/slider',\App\Http\Controllers\admin\SliderController::class)->parameters(['slider'=>'id']);
-      
     // end slider crud
 
+    // about crud
+    Route::resource('about',\App\Http\Controllers\admin\AboutController::class)->parameters(['about'=>'id']);
+    // end about crud
 });
 Route::get('/login',function(){
    return abort(404);
