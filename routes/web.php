@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[\App\Http\Controllers\front\IndexController::class,'index'])->name('show-website');
+Route::get('/blog',[\App\Http\Controllers\front\IndexController::class,'BlogPage'])->name('index-blog');
+Route::get('/single_post/{id}',[\App\Http\Controllers\front\IndexController::class,'SinglePost'])->name('single.post');
+Route::get('/blog_category/{id}',[\App\Http\Controllers\front\IndexController::class,'BlogCategory'])->name('blog.category');
+
+
+
 
 Auth::routes();
 Route::middleware('auth')->prefix('/dashboard')->group(function(){
@@ -36,8 +42,15 @@ Route::middleware('auth')->prefix('/dashboard')->group(function(){
 
     // Team crud
     Route::resource('team', \App\Http\Controllers\admin\TeamController::class)->parameters(['team'=>'id']);
-
    // end Team crud
+    // category crud
+    Route::resource('category',\App\Http\Controllers\admin\CategoryController::class)->parameters(['category'=>'id']);
+    // end category crud
+    // post crud
+    Route::resource('post',\App\Http\Controllers\admin\PostController::class)->parameters(['post'=>'id']);
+
+   // end post crud
+
 });
 Route::get('/login',function(){
    return abort(404);

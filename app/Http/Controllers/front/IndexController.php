@@ -4,6 +4,8 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Category;
+use App\Models\Post;
 use App\Models\Seo;
 use App\Models\Slider;
 use App\Models\Team;
@@ -16,6 +18,27 @@ class IndexController extends Controller
         $slider = Slider::all();
         $about = About::orderBy('id', 'desc')->first();
         $team = Team::all();
-        return view('front.index',compact('seo','slider','about','team'));
+        $category = Category::limit(3)->get();
+        return view('front.index',compact('seo','slider','about','team','category'));
+    }
+    public function BlogPage(){
+        $allcategory = Category::all();
+        $recent_post = Post::orderBy('id', 'desc')->limit(3)->offset(0)->get();
+        $allpost = Post::paginate(4);
+        return view('front.blog',compact('allcategory','recent_post','allpost'));
+    }
+    public function SinglePost($id){
+        $allcategory = Category::all();
+        $recent_post = Post::orderBy('id', 'desc')->limit(3)->offset(0)->get();
+        $single_post = Post::where('id', '=',$id)->first();
+
+        return view('front.single_post',compact('allcategory','recent_post','single_post'));
+    }
+
+    public function BlogCategory($id){
+        $allcategory = Category::all();
+        $recent_post = Post::orderBy('id', 'desc')->limit(3)->offset(0)->get();
+        $allpost = Post::where('category_id', '=',$id)->paginate(5);
+        return view('front.blog-cat',compact('allcategory','recent_post','allpost'));
     }
 }
