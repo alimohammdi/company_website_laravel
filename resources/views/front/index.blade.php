@@ -43,7 +43,7 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    @include('front.partials.footer')
+    @include('front.partials.footer',['info'=>$info,'social'=>$social])
     <!-- End  Footer -->
 
 @endsection

@@ -4,21 +4,22 @@
             <div class="footer-logo">
                 <h2><span>e</span>Business</h2>
             </div>
-
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+            <p>
+                {{ $social->description }}
+            </p>
             <div class="footer-icons">
                 <ul>
                     <li>
-                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="{{ $social->facebook }}"><i class="bi bi-facebook"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="{{ $social->twitter }}"><i class="bi bi-twitter"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="{{ $social->instagram }}"><i class="bi bi-instagram"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="{{ $social->linkedin }}"><i class="bi bi-linkedin"></i></a>
                     </li>
                 </ul>
             </div>

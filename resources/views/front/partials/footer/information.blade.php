@@ -3,12 +3,12 @@
         <div class="footer-head">
             <h4>information</h4>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+              {{ $info->info }}
             </p>
             <div class="footer-contacts">
-                <p><span>Tel:</span> +123 456 789</p>
-                <p><span>Email:</span> contact@example.com</p>
-                <p><span>Working Hours:</span> 9am-5pm</p>
+                <p><span>Tel:</span> {{$info->phone}}</p>
+                <p><span>Email:</span> {{ $info->email }}</p>
+                <p><span>Working Hours:</span> {{ $info->work }}</p>
             </div>
         </div>
     </div>

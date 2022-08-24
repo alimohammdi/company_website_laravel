@@ -48,8 +48,19 @@ Route::middleware('auth')->prefix('/dashboard')->group(function(){
     // end category crud
     // post crud
     Route::resource('post',\App\Http\Controllers\admin\PostController::class)->parameters(['post'=>'id']);
-
    // end post crud
+    // information crud
+    Route::resource('info',\App\Http\Controllers\admin\InformationController::class)->parameters(['info'=>'id']);
+    // end information crud
+     // social crud
+    Route::resource('social',\App\Http\Controllers\admin\SocialController::class)->parameters(['social'=>'id']);
+    // end social crud
+
+    //    contact crud
+    Route::resource('contact',\App\Http\Controllers\admin\ContactController::class)->parameters(['contact'=>'id']);
+    Route::post('ajaxContact',[\App\Http\Controllers\front\IndexController::class,'ajaxContact'])->name('send-contact');
+    //   end contact crud0
+
 
 });
 Route::get('/login',function(){

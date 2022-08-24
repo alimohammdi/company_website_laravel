@@ -5,11 +5,14 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Information;
 use App\Models\Post;
 use App\Models\Seo;
 use App\Models\Slider;
+use App\Models\Social;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class IndexController extends Controller
 {
@@ -19,26 +22,45 @@ class IndexController extends Controller
         $about = About::orderBy('id', 'desc')->first();
         $team = Team::all();
         $category = Category::limit(3)->get();
-        return view('front.index',compact('seo','slider','about','team','category'));
+        $info = Information::orderBy('id', 'desc')->first();
+        $social = Social::orderBy('id', 'desc')->first();
+        return view('front.index',compact('seo','slider','about','team','category','info','social'));
     }
     public function BlogPage(){
         $allcategory = Category::all();
         $recent_post = Post::orderBy('id', 'desc')->limit(3)->offset(0)->get();
         $allpost = Post::paginate(4);
-        return view('front.blog',compact('allcategory','recent_post','allpost'));
+        $social = Social::orderBy('id', 'desc')->first();
+        $info = Information::orderBy('id', 'desc')->first();
+        return view('front.blog',compact('allcategory','recent_post','allpost','social','info'));
     }
     public function SinglePost($id){
         $allcategory = Category::all();
         $recent_post = Post::orderBy('id', 'desc')->limit(3)->offset(0)->get();
         $single_post = Post::where('id', '=',$id)->first();
+        $social = Social::orderBy('id', 'desc')->first();
+        $info = Information::orderBy('id', 'desc')->first();
 
-        return view('front.single_post',compact('allcategory','recent_post','single_post'));
+        return view('front.single_post',compact('allcategory','recent_post','single_post','social','info'));
     }
 
     public function BlogCategory($id){
         $allcategory = Category::all();
         $recent_post = Post::orderBy('id', 'desc')->limit(3)->offset(0)->get();
         $allpost = Post::where('category_id', '=',$id)->paginate(5);
-        return view('front.blog-cat',compact('allcategory','recent_post','allpost'));
+        $social = Social::orderBy('id', 'desc')->first();
+        $info = Information::orderBy('id', 'desc')->first();
+        return view('front.blog-cat',compact('allcategory','recent_post','allpost','social','info'));
+    }
+
+    public function ajaxContact(Request $request){
+
+        Contact::create([
+            'fullName' => $request->fullName,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'comment' => $request->comment
+        ]);
+        return '1';
     }
 }

@@ -10,44 +10,6 @@
                 </div>
             </div>
             <div class="row">
-                <!-- Start contact icon column -->
-                <div class="col-md-4">
-                    <div class="contact-icon text-center">
-                        <div class="single-icon">
-                            <i class="bi bi-phone"></i>
-                            <p>
-                                Call: +1 5589 55488 55<br>
-                                <span>Monday-Friday (9am-5pm)</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Start contact icon column -->
-                <div class="col-md-4">
-                    <div class="contact-icon text-center">
-                        <div class="single-icon">
-                            <i class="bi bi-envelope"></i>
-                            <p>
-                                Email: info@example.com<br>
-                                <span>Web: www.example.com</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Start contact icon column -->
-                <div class="col-md-4">
-                    <div class="contact-icon text-center">
-                        <div class="single-icon">
-                            <i class="bi bi-geo-alt"></i>
-                            <p>
-                                Location: A108 Adam Street<br>
-                                <span>NY 535022, USA</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
 
                 <!-- Start Google Map -->
                 <div class="col-md-6">
@@ -60,26 +22,27 @@
                 <!-- Start  contact -->
                 <div class="col-md-6">
                     <div class="form contact-form">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
-                        </form>
+                        {{ Form::open(['route'=>'send-contact','method'=>'post','id'=>'contact']) }}
+                        <section class="d-block">
+                            {!! Form::label('fullName','fullName') !!}
+                            {!! Form::text('fullName',old('fullName'),['class'=>'form-control mb-2']); !!}
+                        </section>
+                        <section class="d-block">
+                            {!! Form::label('email','email') !!}
+                            {!! Form::email('email',old('email'),['class'=>'form-control mb-2']); !!}
+                        </section>
+                        <section class="d-block">
+                            {!! Form::label('subject','subject') !!}
+                            {!! Form::text('subject',old('subject'),['class'=>'form-control mb-2']); !!}
+                        </section>
+                        <section class="d-block">
+                            {!! Form::label('comment','comment') !!}
+                            {!! Form::textarea('comment',old('comment'),['class'=>'form-control mb-2','style'=>'resize:none;height:100px']); !!}
+                        </section>
+                        <section class="d-block">
+                            {!! Form::submit('Send Request',['class'=>'btn btn-outline-secondary w-100']); !!}
+                        </section>
+                        {!! Form::close(); !!}
                     </div>
                 </div>
                 <!-- End Left contact -->
@@ -87,3 +50,34 @@
         </div>
     </div>
 </div>
+@section('js')
+    <script src="{{asset('front/assets/js/jquery.min.js')}}"></script>
+    <script>
+        $('form#contact').submit(function(event){
+            event.preventDefault();
+            let alldata = $(this).serialize();
+            console.log(alldata);
+            let fullName = $('input[name=fullName]').val()
+            let email = $('input[name=email]').val()
+            let subject = $('input[name=subject]').val()
+            let comment = $('textarea[name=comment]').val()
+            let _token = $('input[name=_token]').val()
+            let url = $(this).attr('action')
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: alldata,
+                success:function(response){
+                    $('input[name=fullName]').val('')
+                    $('input[name=email]').val('')
+                    $('input[name=subject]').val('')
+                    $('textarea[name=comment]').val('')
+                    alert('sent request successfully')
+                }
+            })
+        })
+
+    </script>
+@endsection
+

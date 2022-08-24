@@ -6,7 +6,6 @@
                 <!-- end single footer -->
                 @include('front.partials.footer.information')
                 <!-- end single footer -->
-                @include('front.partials.footer.instagram')
             </div>
         </div>
     </div>

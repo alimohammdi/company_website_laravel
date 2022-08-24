@@ -40,8 +40,17 @@
                                 <a class="nav-link active" aria-current="page" href="{{ route('post.index') }}">Posts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled">Disabled</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('info.index') }}">Info</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('social.index') }}">Social</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('contact.index') }}">Contact</a>
+                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link active" aria-current="page" href="{{ route('comment.index') }}">Comments</a>--}}
+{{--                            </li>--}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.seo') }}">Seo</a>
                             </li>

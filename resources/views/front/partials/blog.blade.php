@@ -37,7 +37,7 @@
                                 </p>
                             </div>
                             <span>
-                  <a href="blog.html" class="ready-btn">Read more</a>
+                  <a href="{{ route('blog.category',['id'=>$item->id]) }}" class="ready-btn">Read more</a>
                 </span>
                         </div>
                         <!-- Start single blog -->
