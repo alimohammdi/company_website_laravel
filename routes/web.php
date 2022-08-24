@@ -61,6 +61,10 @@ Route::middleware('auth')->prefix('/dashboard')->group(function(){
     Route::post('ajaxContact',[\App\Http\Controllers\front\IndexController::class,'ajaxContact'])->name('send-contact');
     //   end contact crud0
 
+    // comment crud
+    Route::post('ajaxComment',[\App\Http\Controllers\front\IndexController::class,'ajaxComment'])->name('send-comment');
+   Route::resource('comment',\App\Http\Controllers\admin\CommentController::class)->parameters(['comment'=>'id']);
+    // end comment crud
 
 });
 Route::get('/login',function(){

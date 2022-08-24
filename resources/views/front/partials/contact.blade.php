@@ -56,13 +56,7 @@
         $('form#contact').submit(function(event){
             event.preventDefault();
             let alldata = $(this).serialize();
-            console.log(alldata);
-            let fullName = $('input[name=fullName]').val()
-            let email = $('input[name=email]').val()
-            let subject = $('input[name=subject]').val()
-            let comment = $('textarea[name=comment]').val()
-            let _token = $('input[name=_token]').val()
-            let url = $(this).attr('action')
+            let url = $(this).attr('action');
             $.ajax({
                 url: url,
                 type: 'POST',

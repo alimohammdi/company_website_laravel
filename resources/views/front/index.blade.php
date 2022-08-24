@@ -17,17 +17,11 @@
         @include('front.partials.about',['about'=>$about])
         <!-- End About Section -->
 
-        <!-- ======= Services Section ======= -->
-        @include('front.partials.services')
-        <!-- End Services Section -->
-
         <!-- ======= Team Section ======= -->
           @include('front.partials.team',['team'=>$team])
         <!-- End Team Section -->
 
-        <!-- ======= Portfolio Section ======= -->
-          @include('front.partials.portfolio')
-        <!-- End Portfolio Section -->
+
 
 
 

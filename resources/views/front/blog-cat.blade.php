@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- ======= Header ======= -->
-    @include('front.partials.header')
+    @include('front.partials.blog.header')
 
     <main id="main">
 

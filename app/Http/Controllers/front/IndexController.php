@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Information;
 use App\Models\Post;
 use App\Models\Seo;
@@ -40,8 +41,8 @@ class IndexController extends Controller
         $single_post = Post::where('id', '=',$id)->first();
         $social = Social::orderBy('id', 'desc')->first();
         $info = Information::orderBy('id', 'desc')->first();
-
-        return view('front.single_post',compact('allcategory','recent_post','single_post','social','info'));
+        $comments = Comment::where('post_id', '=',$id)->get();
+        return view('front.single_post',compact('allcategory','recent_post','single_post','social','info','comments'));
     }
 
     public function BlogCategory($id){
@@ -62,5 +63,15 @@ class IndexController extends Controller
             'comment' => $request->comment
         ]);
         return '1';
+    }
+
+    public function ajaxComment(Request $request){
+       Comment::create([
+           'fullName' => $request->fullName,
+           'email' => $request->email,
+           'comment' => $request->comment,
+           'post_id' =>$request->post_id
+       ]);
+       return '1';
     }
 }

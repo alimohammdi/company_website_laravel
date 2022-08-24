@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- ======= Header ======= -->
-    @include('front.partials.header')
+    @include('front.partials.blog.header')
 
     <main id="main">
 
@@ -20,7 +20,7 @@
                     <!-- Start single blog -->
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <div class="row">
-                           @include('front.partials.blog.single',['single_post'=>$single_post])
+                           @include('front.partials.blog.single',['single_post'=>$single_post,'comments'=>$comments])
                         </div>
                     </div>
                 <!-- end single blog -->

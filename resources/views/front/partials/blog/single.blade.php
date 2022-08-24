@@ -29,5 +29,5 @@
                 </div>
             </article>
             <div class="clear"></div>
-            @include('front.partials.blog.comments_blog');
+            @include('front.partials.blog.comments_blog',['single_post',$single_post,'comments'=>$comments]);
             <!-- single-blog end -->
